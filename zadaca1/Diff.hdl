@@ -1,0 +1,43 @@
+CHIP Diff {
+    IN a[16], b[16];
+    OUT out[16];
+
+    PARTS:
+    //Pomocu Xor sklopa trazimo razlike u bitovima
+    Xor16(a = a, b = b, out = diff);
+
+    // Brojimo 1 u svakom bitu diff pomocu countera
+    And(a = diff[0], b = true, out = count0);
+    And(a = diff[1], b = true, out = count1);
+    And(a = diff[2], b = true, out = count2);
+    And(a = diff[3], b = true, out = count3);
+    And(a = diff[4], b = true, out = count4);
+    And(a = diff[5], b = true, out = count5);
+    And(a = diff[6], b = true, out = count6);
+    And(a = diff[7], b = true, out = count7);
+    And(a = diff[8], b = true, out = count8);
+    And(a = diff[9], b = true, out = count9);
+    And(a = diff[10], b = true, out = count10);
+    And(a = diff[11], b = true, out = count11);
+    And(a = diff[12], b = true, out = count12);
+    And(a = diff[13], b = true, out = count13);
+    And(a = diff[14], b = true, out = count14);
+    And(a = diff[15], b = true, out = count15);
+
+    // Zbrajanje vrijednosti u counterima
+    Add16(a = count0, b = count1, out = sum1);
+    Add16(a = sum1, b = count2, out = sum2);
+    Add16(a = sum2, b = count3, out = sum3);
+    Add16(a = sum3, b = count4, out = sum4);
+    Add16(a = sum4, b = count5, out = sum5);
+    Add16(a = sum5, b = count6, out = sum6);
+    Add16(a = sum6, b = count7, out = sum7);
+    Add16(a = sum7, b = count8, out = sum8);
+    Add16(a = sum8, b = count9, out = sum9);
+    Add16(a = sum9, b = count10, out = sum10);
+    Add16(a = sum10, b = count11, out = sum11);
+    Add16(a = sum11, b = count12, out = sum12);
+    Add16(a = sum12, b = count13, out = sum13);
+    Add16(a = sum13, b = count14, out = sum14);
+    Add16(a = sum14, b = count15, out = out);
+}
