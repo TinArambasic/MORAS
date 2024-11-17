@@ -1,0 +1,40 @@
+CHIP Clz {
+    IN in[16];
+    OUT out[16];
+
+    PARTS:
+    Not(in = in[15], out = bit15);
+    Not(in = in[14], out = bit14);
+    Not(in = in[13], out = bit13);
+    Not(in = in[12], out = bit12);
+    Not(in = in[11], out = bit11);
+    Not(in = in[10], out = bit10);
+    Not(in = in[9], out = bit9);
+    Not(in = in[8], out = bit8);
+    Not(in = in[7], out = bit7);
+    Not(in = in[6], out = bit6);
+    Not(in = in[5], out = bit5);
+    Not(in = in[4], out = bit4);
+    Not(in = in[3], out = bit3);
+    Not(in = in[2], out = bit2);
+    Not(in = in[1], out = bit1);
+    Not(in = in[0], out = bit0);
+
+    // Count leading zeros pomocu mux-a
+    Mux16(a = 0, b = 1, sel = bit15, out = count0);
+    Mux16(a = count0, b = 2, sel = bit14, out = count1);
+    Mux16(a = count1, b = 3, sel = bit13, out = count2);
+    Mux16(a = count2, b = 4, sel = bit12, out = count3);
+    Mux16(a = count3, b = 5, sel = bit11, out = count4);
+    Mux16(a = count4, b = 6, sel = bit10, out = count5);
+    Mux16(a = count5, b = 7, sel = bit9, out = count6);
+    Mux16(a = count6, b = 8, sel = bit8, out = count7);
+    Mux16(a = count7, b = 9, sel = bit7, out = count8);
+    Mux16(a = count8, b = 10, sel = bit6, out = count9);
+    Mux16(a = count9, b = 11, sel = bit5, out = count10);
+    Mux16(a = count10, b = 12, sel = bit4, out = count11);
+    Mux16(a = count11, b = 13, sel = bit3, out = count12);
+    Mux16(a = count12, b = 14, sel = bit2, out = count13);
+    Mux16(a = count13, b = 15, sel = bit1, out = count14);
+    Mux16(a = count14, b = 16, sel = bit0, out = out);
+}
