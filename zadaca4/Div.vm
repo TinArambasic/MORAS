@@ -1,0 +1,51 @@
+push constant 68
+push constant 5
+call Div.div 2
+
+label END
+goto END
+
+function Div.div 2
+push constant 0
+pop local 0
+
+push argument 1
+pop local 1
+
+push argument 1
+push argument 0
+gt
+if-goto IS_GREATER
+
+label LOOP_START
+push local 1
+push argument 1
+add
+push argument 0
+gt
+if-goto LOOP_END
+
+push local 1
+push argument 1
+add
+pop local 1
+
+push constant 1
+push local 0
+add
+pop local 0
+
+goto LOOP_START
+label LOOP_END
+
+
+push constant 1
+push local 0
+add
+goto RETURN
+
+label IS_GREATER
+push constant 0
+
+label RETURN
+return

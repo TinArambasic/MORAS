@@ -1,0 +1,31 @@
+function min.Min 3
+    push argument 0
+    push argument 1
+    sub
+    pop local 0
+
+    push local 0
+    if-goto TRUE
+
+    push argument 1
+    goto END
+
+label TRUE
+    push argument 0
+
+label END
+    push argument 2
+    sub
+    pop local 0
+
+    push local 0
+    if-goto TRUE_C
+
+    push argument 2
+    goto END_C
+
+label TRUE_C
+    push argument 0
+
+label END_C
+    return

@@ -1,0 +1,29 @@
+function lucas.Lucas 0
+  push argument 0
+  push constant 0
+  eq
+  if-goto L0
+
+  push argument 0
+  push constant 1
+  eq
+  if-goto L1
+
+  push argument 0
+  push constant 2
+  sub
+  call lucas.Lucas 1
+  push argument 0
+  push constant 1
+  sub
+  call lucas.Lucas 1
+  add
+  return
+
+label L0
+  push constant 2
+  return
+
+label L1
+  push constant 1
+  return
